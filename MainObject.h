@@ -11,7 +11,7 @@
 #define MAX_FALL_SPEED 10
 #define PLAYER_SPEED  12
 #define PLAYER_JUMP_VAL 18
-#define SIZE 64
+#define SIZE 128
 
 
 class MainObject : public BaseObject

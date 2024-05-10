@@ -29,20 +29,18 @@ MainObject::~MainObject()
 
 }
 
-bool MainObject::LoadImg(std::string path, SDL_Renderer* screen) // load anh dau vao
+bool MainObject::LoadImg(std::string path, SDL_Renderer* screen)
 {
     bool ret = BaseObject::LoadImg(path, screen);
     if (ret == true)
     {
-        /*width_frame_ = SIZE - 30; 
-        height_frame_ = SIZE - 25;*/
-        width_frame_ = SIZE;
-        height_frame_ = SIZE;
+        width_frame_ = SIZE - 30; 
+        height_frame_ = SIZE - 25;
     }
     return ret;
 }
 
-SDL_Rect MainObject::GetRectFrame() 
+SDL_Rect MainObject::GetRectFrame()
 {
     SDL_Rect rect;
     rect.x = rect_.x;
@@ -60,14 +58,10 @@ void MainObject::set_clips()
     {
         for (int i = 0; i < number_tiles; i++)
         {
-            /*frame_clip_[i].x = i * width_frame_ + 30 * i;
+            frame_clip_[i].x = i * width_frame_ + 30 * i;
             frame_clip_[i].y = 25;
             frame_clip_[i].w = width_frame_;
-            frame_clip_[i].h = height_frame_ + 25;*/
-            frame_clip_[i].x = i * width_frame_;
-            frame_clip_[i].y = 0;
-            frame_clip_[i].w = width_frame_;
-            frame_clip_[i].h = height_frame_;
+            frame_clip_[i].h = height_frame_ + 25;
         }
     }
 }
@@ -111,7 +105,7 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen, Mix_C
     {
         switch (events.key.keysym.sym)
         {
-        case SDLK_RIGHT:
+        case SDLK_d:
         {
             status_ = WALK_RIGHT;
             input_type_.right_ = 1;
@@ -119,7 +113,7 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen, Mix_C
             UpdateImagePlayer(screen, path);
         }
         break;
-        case SDLK_LEFT:
+        case SDLK_a:
         {
             status_ = WALK_LEFT;
             input_type_.left_ = 1;
@@ -133,12 +127,12 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen, Mix_C
     {
         switch (events.key.keysym.sym)
         {
-        case SDLK_RIGHT:
+        case SDLK_d:
         {
             input_type_.right_ = 0;
         }
         break;
-        case SDLK_LEFT:
+        case SDLK_a:
         {
             input_type_.left_ = 0;
         }
@@ -151,7 +145,7 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen, Mix_C
         if (events.button.button == SDL_BUTTON_RIGHT)
         {
             input_type_.jump_ = 1;
-            /*mix_playchannel(-1, g_jump, 0);*/
+            /*Mix_PlayChannel(-1, g_jump, 0);*/
         }
         else if (events.button.button == SDL_BUTTON_LEFT)
         {
