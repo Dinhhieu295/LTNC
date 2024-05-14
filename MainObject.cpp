@@ -111,7 +111,7 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen, Mix_C
     {
         switch (events.key.keysym.sym)
         {
-        case SDLK_RIGHT:
+        case SDLK_d:
         {
             status_ = WALK_RIGHT;
             input_type_.right_ = 1;
@@ -119,7 +119,7 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen, Mix_C
             UpdateImagePlayer(screen, path);
         }
         break;
-        case SDLK_LEFT:
+        case SDLK_a:
         {
             status_ = WALK_LEFT;
             input_type_.left_ = 1;
@@ -133,12 +133,13 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen, Mix_C
     {
         switch (events.key.keysym.sym)
         {
-        case SDLK_RIGHT:
+        case SDLK_d:
         {
             input_type_.right_ = 0;
         }
+
         break;
-        case SDLK_LEFT:
+        case SDLK_a:
         {
             input_type_.left_ = 0;
         }
@@ -223,7 +224,7 @@ void MainObject::RemoveBullet(const int& idx)
     }
 }
 
-void MainObject::DoPlayer(Map& map_data)
+void MainObject::DoPlayer(Map& map_data, PlayerPower& player_powerr, SDL_Renderer* des)
 {
     if (come_back_time_ == 0)
     {
@@ -278,9 +279,10 @@ void MainObject::DoPlayer(Map& map_data)
             y_pos_ = 0;
             x_val_ = 0;
             y_val_ = 0;
+            player_powerr.Decrease();
+            player_powerr.Render(des);
         }
     }
-
 }
 
 void MainObject::CenterEntityOnMap(Map& map_data)

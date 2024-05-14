@@ -57,7 +57,7 @@ bool InitData()
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
-    g_window = SDL_CreateWindow("Uoc mo va hi vong",
+    g_window = SDL_CreateWindow("fightfer",
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
         SCREEN_WIDTH, SCREEN_HEIGHT,
@@ -419,7 +419,7 @@ int main(int argc, char* argv[])
 
                     p_player.HandleBullet(g_screen);
                     p_player.SetMapXY(map_data.start_x_, map_data.start_y_);
-                    p_player.DoPlayer(map_data);
+                    p_player.DoPlayer(map_data, player_power, g_screen);
                     p_player.Show(g_screen, player_file_);
 
                     game_map.SetMap(map_data);

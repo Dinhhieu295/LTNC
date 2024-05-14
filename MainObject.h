@@ -6,12 +6,13 @@
 #include "CommonFunc.h"
 #include "BaseObject.h"
 #include "BulletObject.h"
+#include "PlayerPower.h"
 
 #define GRAVITY_SPEED 5
 #define MAX_FALL_SPEED 10
 #define PLAYER_SPEED  12
 #define PLAYER_JUMP_VAL 18
-#define SIZE 128
+#define SIZE 64
 
 
 class MainObject : public BaseObject
@@ -32,7 +33,7 @@ public:
     void HandelInputAction(SDL_Event events, SDL_Renderer* screen, Mix_Chunk* g_jump, std::string path);
     void set_clips();
 
-    void DoPlayer(Map& map_data);
+    void DoPlayer(Map& map_data, PlayerPower& player_powerr, SDL_Renderer* des);
     void CheckToMap(Map& map_data);
     void SetMapXY(const int map_x, const int map_y) { map_x_ = map_x; map_y_ = map_y; }
     void CenterEntityOnMap(Map& map_data);
