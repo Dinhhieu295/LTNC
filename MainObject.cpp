@@ -224,7 +224,7 @@ void MainObject::RemoveBullet(const int& idx)
     }
 }
 
-void MainObject::DoPlayer(Map& map_data, PlayerPower& player_powerr, SDL_Renderer* des)
+void MainObject::DoPlayer(Map& map_data, PlayerPower& player_powerr, int& num_die)
 {
     if (come_back_time_ == 0)
     {
@@ -235,7 +235,6 @@ void MainObject::DoPlayer(Map& map_data, PlayerPower& player_powerr, SDL_Rendere
         {
             y_val_ = MAX_FALL_SPEED;
         }
-
 
         if (input_type_.left_ == 1)
         {
@@ -279,8 +278,14 @@ void MainObject::DoPlayer(Map& map_data, PlayerPower& player_powerr, SDL_Rendere
             y_pos_ = 0;
             x_val_ = 0;
             y_val_ = 0;
-            player_powerr.Decrease();
-            player_powerr.Render(des);
+            num_die++;
+            if (num_die <= 3)
+            {
+                if (num_die != 2) {
+                    player_powerr.Decrease();
+                    player_powerr.Render(g_screen);
+                }
+            }
         }
     }
 }

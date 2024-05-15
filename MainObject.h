@@ -33,7 +33,7 @@ public:
     void HandelInputAction(SDL_Event events, SDL_Renderer* screen, Mix_Chunk* g_jump, std::string path);
     void set_clips();
 
-    void DoPlayer(Map& map_data, PlayerPower& player_powerr, SDL_Renderer* des);
+    void DoPlayer(Map& map_data, PlayerPower& player_powerr, int& num_die);
     void CheckToMap(Map& map_data);
     void SetMapXY(const int map_x, const int map_y) { map_x_ = map_x; map_y_ = map_y; }
     void CenterEntityOnMap(Map& map_data);
